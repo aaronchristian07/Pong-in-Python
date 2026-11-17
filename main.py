@@ -1,5 +1,6 @@
 import turtle
 from constants import *
+from setup import *
 
 # entities
 player_scores = [0, 0]
@@ -41,20 +42,8 @@ for scoreboard in scoreboards:
     )
 #endfor
 
-border = turtle.Turtle()
-border.teleport(-ARENA_WIDTH / 2, ARENA_HEIGHT / 2)
-border.pendown()
-border.pencolor("black")
-border.speed(0)
-border.hideturtle()
-for i in range (4):
-    distance = 0
-    if i % 2 == 0:
-        distance = ARENA_WIDTH
-    else:
-        distance = ARENA_HEIGHT
-    border.forward(distance)
-    border.rt(90)
+pen = turtle.Turtle()
+draw_rectangle(pen, ARENA_WIDTH, ARENA_HEIGHT, 0, 0)
 
 player1 = turtle.Turtle(shape="square")
 player2 = turtle.Turtle(shape="square")
