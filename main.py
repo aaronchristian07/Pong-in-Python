@@ -1,11 +1,13 @@
 import turtle
 from constants import *
 from setup import *
+from entities.scoreboard import Scoreboard
 
 # entities
 player_scores = [0, 0]
 
 screen = turtle.Screen()
+screen.tracer(0)
 screen.title("Pong in Python")
 screen.getcanvas().winfo_toplevel().state("zoomed")  # fullscreen
 screen.screensize(SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -17,30 +19,7 @@ title.speed(0)
 title.goto(0, TITLE_ALTITUDE)
 title.write("Pong", font=(FONT_STYLE, TITLE_FONT_SIZE, "bold"), align="center")
 
-scoreboard1 = turtle.Turtle()
-scoreboard2 = turtle.Turtle()
-
-scoreboards = [scoreboard1, scoreboard2]
-for scoreboard in scoreboards:
-    scoreboard.penup()
-    scoreboard.hideturtle()
-    scoreboard.speed(0)
-    position = None
-    score = 0
-    if scoreboard == scoreboards[0]:
-        position = -SCOREBOARD_POSITION_ABS
-        score = player_scores[0]
-    else:
-        position = SCOREBOARD_POSITION_ABS
-        score = player_scores[1]
-    
-    scoreboard.goto(position, SCOREBOARD_ALTITUDE)
-    scoreboard.write(
-        f"{score}",
-        align="center",
-        font=(FONT_STYLE, HEADING_FONT_SIZE, "bold")
-    )
-#endfor
+scoreboard = Scoreboard()
 
 draw_rectangle(ARENA_WIDTH, ARENA_HEIGHT, 0, 0)
 draw_dotted_line(0, ARENA_HEIGHT / 2, ARENA_HEIGHT, 10)
@@ -62,8 +41,9 @@ ball = turtle.Turtle("square")
 ball.color("red")
 
 def main():
-    print("Hello World")
-    input()
+    screen.update()
+    screen.tracer(1, 10)
+    screen.mainloop()
 
 if __name__ == "__main__":
     main()
