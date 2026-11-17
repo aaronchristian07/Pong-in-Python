@@ -42,8 +42,8 @@ for scoreboard in scoreboards:
     )
 #endfor
 
-pen = turtle.Turtle()
-draw_rectangle(pen, ARENA_WIDTH, ARENA_HEIGHT, 0, 0)
+draw_rectangle(ARENA_WIDTH, ARENA_HEIGHT, 0, 0)
+draw_dotted_line(0, ARENA_HEIGHT / 2, ARENA_HEIGHT, 10)
 
 player1 = turtle.Turtle(shape="square")
 player2 = turtle.Turtle(shape="square")
